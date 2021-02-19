@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Card:</strong>
+  <%= @cards_test.card_id %>
+</p>
+
+<p>
+  <strong>Test:</strong>
+  <%= @cards_test.test_id %>
+</p>
+
+<p>
+  <strong>Correct:</strong>
+  <%= @cards_test.correct %>
+</p>
+
+<%= link_to 'Edit', edit_cards_test_path(@cards_test) %> |
+<%= link_to 'Back', cards_tests_path %>

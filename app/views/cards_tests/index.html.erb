@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cards Tests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Card</th>
+      <th>Test</th>
+      <th>Correct</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cards_tests.each do |cards_test| %>
+      <tr>
+        <td><%= cards_test.card_id %></td>
+        <td><%= cards_test.test_id %></td>
+        <td><%= cards_test.correct %></td>
+        <td><%= link_to 'Show', cards_test %></td>
+        <td><%= link_to 'Edit', edit_cards_test_path(cards_test) %></td>
+        <td><%= link_to 'Destroy', cards_test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cards Test', new_cards_test_path %>
