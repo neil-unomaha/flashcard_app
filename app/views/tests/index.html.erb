@@ -3,11 +3,13 @@
 <h1>Tests <%= link_to '+ New Test', new_test_path, class: "btn btn-sm btn-success" %></h1>
 
 <% @tests.each do |test| %>
-  <h2>
-    Test: <%= test.name%>
-    <%= link_to 'Destroy Test', test, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
-  </h2>
-  <p class="text-muted">(Show Front of Card First? <%= test.question_first?%>)</p>
+  <div class="text-center">
+    <h2>
+      Test: <%= test.name%>
+    </h2>
+    <small><%= link_to 'Destroy Test', test, method: :delete, data: { confirm: 'Are you sure?' } %> </small>
+    <p class="text-muted">(Show Front of Card First? <%= test.question_first?%>)</p>\
+  </div>
   <table class="table table-striped">
     <thead>
       <tr>
