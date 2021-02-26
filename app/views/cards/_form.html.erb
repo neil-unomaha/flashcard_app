@@ -12,18 +12,18 @@
   <% end %>
 
 
-    <%= form.hidden_field :domain_id %>
-    <%= form.hidden_field :category_id %>
-
+  <%= form.hidden_field :domain_id %>
+  <%= form.hidden_field :category_id %>
 
   <div class="field">
-    <%= form.label :question %>
-    <%= form.text_area :question %>
+    <%= form.label :front, "Front of Card" %>
+    <%= form.rich_text_area :front %>
   </div>
 
+  <br>
   <div class="field">
-    <%= form.label :answer %>
-    <%= form.text_area :answer %>
+    <%= form.label :back ,"Back of Card" %>
+    <%= form.rich_text_area :back %>
   </div>
 
   <div class="actions">
