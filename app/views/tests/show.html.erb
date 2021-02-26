@@ -1,9 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Question first:</strong>
-  <%= @test.question_first %>
-</p>
+<h1>Test Name: <%= @test.name%></h1>
 
-<%= link_to 'Edit', edit_test_path(@test) %> |
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Domain</th>
+      <th>Category</th>
+      <th>Front</th>
+      <th>Back</th>
+      <th>Correct?</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @test.cards_tests.each do |card_test| %>
+      <tr>
+        <td><%= card_test.card.domain.name %></td>
+        <td><%= card_test.card.category.name %></td>
+        <td><%= card_test.card.front %></td>
+        <td><%= card_test.card.back %></td>
+        <td><%= card_test.correct_to_s %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <%= link_to 'Back', tests_path %>

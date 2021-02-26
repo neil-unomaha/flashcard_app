@@ -12,7 +12,7 @@ class TestsController < ApplicationController
 
   # GET /tests/new
   def new
-    @test = Test.new
+    @test = Test.new(question_first: true)
   end
 
   # GET /tests/1/edit
@@ -22,9 +22,17 @@ class TestsController < ApplicationController
   # POST /tests or /tests.json
   def create
     @test = Test.new(test_params)
-
     respond_to do |format|
       if @test.save
+        # pull in all the cards for that category in order to make a test
+        if params[:test][:category_ids].reject(&:empty?).any?
+          params[:test][:category_ids].reject(&:empty?).each do |cat_id|
+            Category.find(cat_id).cards.each do |card|
+              @test.cards_tests.build(card: card).save
+            end
+          end
+        end
+
         format.html { redirect_to @test, notice: "Test was successfully created." }
         format.json { render :show, status: :created, location: @test }
       else
@@ -64,6 +72,6 @@ class TestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def test_params
-      params.require(:test).permit(:question_first)
+      params.require(:test).permit(:question_first, :name, :category_ids)
     end
 end

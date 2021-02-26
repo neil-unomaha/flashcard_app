@@ -2,7 +2,7 @@
 
 <h1>Cards</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Domain</th>
@@ -16,8 +16,8 @@
   <tbody>
     <% @cards.each do |card| %>
       <tr>
-        <td><%= card.domain_id %></td>
-        <td><%= card.category_id %></td>
+        <td><%= card.domain.try(:name) %></td>
+        <td><%= card.category.try(:name) %></td>
         <td><%= card.front %></td>
         <td><%= card.back %></td>
         <td><%= link_to 'Show', card %></td>

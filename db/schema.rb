@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_024817) do
+ActiveRecord::Schema.define(version: 2021_02_26_032118) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -105,14 +105,9 @@ ActiveRecord::Schema.define(version: 2021_02_26_024817) do
     t.boolean "question_first"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "cards", "categories"
-  add_foreign_key "cards", "domains"
-  add_foreign_key "cards_tags", "cards"
-  add_foreign_key "cards_tags", "tags"
-  add_foreign_key "cards_tests", "cards"
-  add_foreign_key "cards_tests", "tests"
 end
