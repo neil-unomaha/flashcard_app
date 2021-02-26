@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'main#index'
   resources :cards_tests
   resources :tests
   resources :cards_tags

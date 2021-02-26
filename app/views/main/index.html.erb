@@ -1,0 +1,37 @@
+<h1 class=" text-center text-primary">FlashCard App</h1>
+
+<div class="row">
+  <%= link_to 'Domains', domains_path, class: 'col-sm-4 btn btn-primary'%>
+  <%= link_to 'Categories', categories_path, class: 'col-sm-4 btn btn-primary'%>
+  <%= link_to 'Tags', tags_path, class: 'col-sm-4 btn btn-primary'%>
+</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Categories</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Domain.all.each do |domain| %>
+      <tr>
+        <td>
+          <h2><%= domain.name %> </h2>
+          <%= link_to "+ Add Category", new_category_path(domain_id: domain), class: 'btn btn-sm btn-success' %>
+        </td>
+        <td>
+          <% domain.categories.each do |cat|%>
+            <div class="row">
+              <div class="col-sm-12">
+                <span class="badge badge-pill badge-info"><%= cat.cards.size%> </span> <%= link_to cat.name, category_path(cat) %>
+              </div>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
