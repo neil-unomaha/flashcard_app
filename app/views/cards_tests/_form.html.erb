@@ -11,22 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :card_id %>
-    <%= form.text_field :card_id %>
+  <div class="row">
+    <div class=col-sm-5>
+      <div class="card-front card-front-js <%= hide_front_card(@cards_test.test)%>">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <%= @cards_test.card.front %>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <br><br>
+      <div class="text-center" id="flip-card-btn"><button type=button class="btn btn-info">Flip Card</button></div>
+      <br><br>
+      <div class="text-center">
+        <div class="actions">
+          <%= form.submit "Correct", name: "Correct", class: "btn btn-success" %>
+        </div>
+      </div>
+      <br>
+      <div class="text-center">
+        <div class="actions">
+          <%= form.submit "Incorrect", name: "Incorrect", class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+    <div class=col-sm-5>
+      <div class="card-back card-back-js <%= hide_back_card(@cards_test.test)%>">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <%= @cards_test.card.back %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :test_id %>
-    <%= form.text_field :test_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :correct %>
-    <%= form.check_box :correct %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

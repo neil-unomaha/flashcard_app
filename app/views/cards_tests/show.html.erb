@@ -1,19 +1,6 @@
-<p id="notice"><%= notice %></p>
+<div class="alert alert-success">
+  <strong>Test Complete!</strong> You got <strong><%=@cards_test.test.cards_tests.answered_correct.size%></strong> Out of <strong><%= @cards_test.test.cards_tests.size%></strong> Questions Correct!
+</div>
 
-<p>
-  <strong>Card:</strong>
-  <%= @cards_test.card_id %>
-</p>
 
-<p>
-  <strong>Test:</strong>
-  <%= @cards_test.test_id %>
-</p>
-
-<p>
-  <strong>Correct:</strong>
-  <%= @cards_test.correct %>
-</p>
-
-<%= link_to 'Edit', edit_cards_test_path(@cards_test) %> |
-<%= link_to 'Back', cards_tests_path %>
+<%= link_to 'Back to Tests', tests_path %>

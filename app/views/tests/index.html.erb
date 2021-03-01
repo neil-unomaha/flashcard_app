@@ -8,7 +8,10 @@
       Test: <%= test.name%>
     </h2>
     <small><%= link_to 'Destroy Test', test, method: :delete, data: { confirm: 'Are you sure?' } %> </small>
-    <p class="text-muted">(Show Front of Card First? <%= test.question_first?%>)</p>\
+    <p class="text-muted">(Show Front of Card First? <%= test.question_first?%>)</p>
+    <% if test.cards.any? %>
+      <%= link_to "Start/Restart Test", edit_cards_test_path(test.cards_tests.first, start_test: true), class: "btn btn-info"%>
+    <% end %>
   </div>
   <table class="table table-striped">
     <thead>
@@ -23,7 +26,7 @@
 
     <tbody>
       <% test.cards_tests.each do |card_test| %>
-        <tr class="<%= card_test.correct? ? 'text-success' : ''%>">
+        <tr class="<%=card_answer_styling(card_test)%>">
           <td><%= card_test.card.domain.name %></td>
           <td><%= card_test.card.category.name %></td>
           <td><%= card_test.card.front %></td>

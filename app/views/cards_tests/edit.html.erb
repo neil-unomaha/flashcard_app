@@ -1,6 +1,11 @@
-<h1>Editing Cards Test</h1>
+<h1 class="text-info text-center">Test: <%= @cards_test.test.name%></h1>
 
+<div class="text-center">
+  Progress: <strong><%= @cards_test.test.cards_tests.unanswered.size %></strong> question(s) left in test
+</div>
+<div class="progress">
+ <div class="progress-bar bg-success" style="width:<%= test_progress_percentage(@cards_test.test)%>"><%= test_progress_percentage(@cards_test.test)%></div>
+</div>
+
+<br><br>
 <%= render 'form', cards_test: @cards_test %>
-
-<%= link_to 'Show', @cards_test %> |
-<%= link_to 'Back', cards_tests_path %>

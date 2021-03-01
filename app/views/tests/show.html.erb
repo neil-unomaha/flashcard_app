@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<div class="text-center">
+  <%= link_to "Start/Restart Test", edit_cards_test_path(@test.cards_tests.first, start_test: true), class: "btn btn-info"%>
+</div>
+
 <h1>Test Name: <%= @test.name%></h1>
 
 <table class="table table-striped">
@@ -27,4 +31,4 @@
 </table>
 
 
-<%= link_to 'Back', tests_path %>
+<%= link_to 'Back to all tests', tests_path, class: "btn btn-info" %>

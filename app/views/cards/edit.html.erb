@@ -4,4 +4,5 @@
 <%= render 'form', card: @card %>
 
 <%= link_to 'Show', @card %> |
-<%= link_to 'Back', cards_path %>
+<br>
+<%= link_to 'Back to Category', @card.category, class: "btn btn-info" %>

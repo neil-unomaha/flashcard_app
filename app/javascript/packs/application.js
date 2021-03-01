@@ -16,6 +16,11 @@ document.addEventListener('turbolinks:load', () => {
   $('[data-toggle="popover"]').popover()
   $('.toast').toast({ autohide: false })
   $('#toast').toast('show')
+
+  $('#flip-card-btn').on('click', function(){
+    $('.card-front-js').removeClass('d-none');
+    $('.card-back-js').removeClass('d-none');
+  })
 })
 
 
