@@ -26,12 +26,18 @@ document.addEventListener('turbolinks:load', () => {
     $(document).keyup(function(e){
       if(e.keyCode == 70){
         // f key == flip
+        $(".flip-card-js").removeClass('btn-outline-info');
+        $(".flip-card-js").addClass('btn-info');
         $(".flip-card-js").click();
       }else if(e.keyCode == 67) {
         // c key == correct
+        $(".correct-answer-js").removeClass('btn-outline-success');
+        $(".correct-answer-js").addClass('btn-success');
         $(".correct-answer-js").click();
       }else if(e.keyCode == 73){
         // i key == incorrect
+        $(".incorrect-answer-js").removeClass('btn-outline-danger');
+        $(".incorrect-answer-js").addClass('btn-danger');
         $(".incorrect-answer-js").click();
       }
     });
