@@ -21,6 +21,22 @@ document.addEventListener('turbolinks:load', () => {
     $('.card-front-js').removeClass('d-none');
     $('.card-back-js').removeClass('d-none');
   })
+
+  if( $('.appBody').hasClass("cards_tests") ){
+    $(document).keyup(function(e){
+      if(e.keyCode == 70){
+        // f key == flip
+        $(".flip-card-js").click();
+      }else if(e.keyCode == 67) {
+        // c key == correct
+        $(".correct-answer-js").click();
+      }else if(e.keyCode == 73){
+        // i key == incorrect
+        $(".incorrect-answer-js").click();
+      }
+    });
+  }
+
 })
 
 
