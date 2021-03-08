@@ -2,38 +2,56 @@
 
 <h1>Tests <%= link_to '+ New Test', new_test_path, class: "btn btn-sm btn-success" %></h1>
 
-<% @tests.each do |test| %>
-  <div class="text-center">
-    <h2>
-      Test: <%= test.name%>
-    </h2>
-    <small><%= link_to 'Destroy Test', test, method: :delete, data: { confirm: 'Are you sure?' } %> </small>
-    <p class="text-muted">(Show Front of Card First? <%= test.question_first?%>)</p>
-    <% if test.cards.any? %>
-      <%= link_to "Start/Restart Test", edit_cards_test_path(test.cards_tests.first, start_test: true), class: "btn btn-info"%>
-    <% end %>
-  </div>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Domain</th>
-        <th>Category</th>
-        <th>Front</th>
-        <th>Back</th>
-        <th>Correct?</th>
-      </tr>
-    </thead>
+<div id="accordion">
 
-    <tbody>
-      <% test.cards_tests.each do |card_test| %>
-        <tr class="<%=card_answer_styling(card_test)%>">
-          <td><%= card_test.card.domain.name %></td>
-          <td><%= card_test.card.category.name %></td>
-          <td><%= card_test.card.front %></td>
-          <td><%= card_test.card.back %></td>
-          <td><%= card_test.correct_to_s %></td>
-        </tr>
+<% @tests.each do |test| %>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>
+        Test: <%= test.name%>
+
+        <small>
+        <a class="card-link" data-toggle="collapse" class="align-right" href="#collapse<%=test.id%>">
+          (see results)
+        </a>
+        </small>
+
+      </h3>
+      <% if test.cards.any? %>
+        <%= link_to "Start/Restart Test", edit_cards_test_path(test.cards_tests.first, start_test: true), class: "btn btn-sm btn-info"%>
       <% end %>
-    </tbody>
-  </table>`
+      <%= link_to 'Destroy Test', test, class: "btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <div id="collapse<%=test.id%>" class="collapse" data-parent="#accordion">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Category</th>
+              <th>Front</th>
+              <th>Back</th>
+              <th>Correct?</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% test.cards_tests.each do |card_test| %>
+              <tr class="<%=card_answer_styling(card_test)%>">
+                <td><%= card_test.card.domain.name %></td>
+                <td><%= card_test.card.category.name %></td>
+                <td><%= card_test.card.front %></td>
+                <td><%= card_test.card.back %></td>
+                <td><%= card_test.correct_to_s %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
 <% end %>
+
+</div>
