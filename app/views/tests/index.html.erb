@@ -17,6 +17,10 @@
         </a>
         </small>
 
+        <% unless test.test_not_started?%>
+          <small><%= test.cards_correct %> out of <%= test.total_cards%> correct</small>
+        <% end %>
+
       </h3>
       <% if test.cards.any? %>
         <%= link_to "Start/Restart Test", edit_cards_test_path(test.cards_tests.first, start_test: true), class: "btn btn-sm btn-info"%>
