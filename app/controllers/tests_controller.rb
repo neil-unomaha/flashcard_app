@@ -65,7 +65,7 @@ class TestsController < ApplicationController
   end
 
   def create_on_incorrect
-    @incorrect_answers_test = Test.new(name: "Learn incorrect cards (from #{@test.name})")
+    @incorrect_answers_test = Test.new(name: "Learn incorrect cards (from #{@test.name})", question_first: @test.question_first)
     @incorrect_answers_test.save
     @test.cards_tests.each do |ct|
       next if ct.correct?
