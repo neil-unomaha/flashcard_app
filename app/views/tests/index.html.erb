@@ -26,6 +26,10 @@
         <%= link_to "Start/Restart Test", edit_cards_test_path(test.cards_tests.first, start_test: true), class: "btn btn-sm btn-info"%>
       <% end %>
       <%= link_to 'Destroy Test', test, class: "btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      <% if test.completed? && test.at_least_one_card_incorrect?%>
+        <%= link_to 'Create Test with Incorrect Cards', create_on_incorrect_test_path(test), class: "btn btn-sm btn-success" %>
+      <% end %>
     </div>
     <div id="collapse<%=test.id%>" class="collapse" data-parent="#accordion">
       <div class="card-body">

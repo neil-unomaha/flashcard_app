@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root to: 'main#index'
   resources :cards_tests
-  resources :tests
+  resources :tests do
+    member do
+      get 'create_on_incorrect'
+    end
+  end
   resources :cards_tags
   resources :cards
   resources :tags

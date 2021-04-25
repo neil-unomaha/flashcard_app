@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: %i[ show edit update destroy ]
+  before_action :set_test, only: %i[ show edit update destroy create_on_incorrect ]
 
   # GET /tests or /tests.json
   def index
@@ -62,6 +62,16 @@ class TestsController < ApplicationController
       format.html { redirect_to tests_url, notice: "Test was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def create_on_incorrect
+    @incorrect_answers_test = Test.new(name: "Learn incorrect cards ##{Test.last.id + 1}")
+    @incorrect_answers_test.save
+    @test.cards_tests.each do |ct|
+      next if ct.correct?
+      CardsTest.create(test: @incorrect_answers_test, card: ct.card )
+    end
+    redirect_to @incorrect_answers_test, notice: "Test of incorrect cards created successfully."
   end
 
   private
