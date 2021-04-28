@@ -15,6 +15,26 @@ class TestsController < ApplicationController
     @test = Test.new(question_first: true)
   end
 
+  def combine_new
+    @test = Test.new(question_first: true)
+  end
+
+  def combine_create
+    @test = Test.new(test_params)
+    if @test.save
+      if params[:test][:test_ids].reject(&:empty?).any?
+        params[:test][:test_ids].reject(&:empty?).each do |test_id|
+          Test.find(test_id).cards.each do |card|
+            @test.cards_tests.build(card: card).save
+          end
+        end
+      end
+      redirect_to @test, notice: "Test was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   # GET /tests/1/edit
   def edit
   end
@@ -82,6 +102,6 @@ class TestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def test_params
-      params.require(:test).permit(:question_first, :name, :category_ids)
+      params.require(:test).permit(:question_first, :name, :category_ids, :test_ids)
     end
 end

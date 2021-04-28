@@ -1,0 +1,40 @@
+<%= form_with(model: test, url: combine_create_tests_path) do |form| %>
+  <% if test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(test.errors.count, "error") %> prohibited this test from being saved:</h2>
+
+      <ul>
+        <% test.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= form.check_box :question_first %>
+    <%= form.label :question_first, "Uncheck to Show Back of Card First" %>
+  </div>
+
+  <br>
+
+  <h3 class='text-muted'>Select Tests. All cards within selected tests will be added</h3>
+  <div class="field">
+    <%= form.collection_check_boxes(:test_ids, Test.all, :id, :name) do |b| %>
+      <span class="badge badge-pill badge-info"><%= b.object.cards.size%> </span>
+      <%= b.check_box %>
+      <%= b.label %>
+      <br>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

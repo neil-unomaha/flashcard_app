@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     member do
       get 'create_on_incorrect'
     end
+    collection do
+      get 'combine_new'
+      post 'combine_create'
+    end
   end
   resources :cards_tags
   resources :cards

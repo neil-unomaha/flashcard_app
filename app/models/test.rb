@@ -1,5 +1,5 @@
 class Test < ApplicationRecord
-  attr_accessor :category_ids
+  attr_accessor :category_ids, :test_ids
   has_many :cards_tests, dependent: :destroy
   has_many :cards, through: :cards_tests
 
