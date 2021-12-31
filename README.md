@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The ruby version required for rails `6.1.x` is `>= 2.5.0`
 
-Things you may want to cover:
+To start your web server, from the root of your app: `rails s`
+To start webpacker (so that your css and javascript is served), from the root of your app: `./bin/webpack-dev-server` 
 
-* Ruby version
+*Background*:In your environment, you likely need to start both the web server and webpacker so that both your web app and your web app's assets are served. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
