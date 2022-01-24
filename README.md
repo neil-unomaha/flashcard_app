@@ -1,12 +1,10 @@
 # README
+The ruby version required for rails 6.1.x is >= 2.5.0. I used ruby 3.0.
 
-The ruby version required for rails `6.1.x` is `>= 2.5.0`
+From the root of your app, run bundle to install required gems and dependent gems.
 
-From the root of your app, run `bundle` to install required gems and dependent gems.
+To start your web server, from the root of your app run: rails s
 
-To start your web server, from the root of your app run: `rails s`
+Note This app assumes your databases exists outside of the application. In other words it does not exist in the default <your_app>/db/ directory. Instead the database exists at: ../imported_dbs/musings_database.sqlite3
 
-To start webpacker (so that your css and javascript is served), from the root of your app run: `./bin/webpack-dev-server` 
-
-**Background:** In your environment, you likely need to start both the web server and webpacker so that both your web app and your web app's assets are served. 
-
+The reasoning for doing this is so that I can seperately version a repo containing all the sqlite databases for each of my personal apps.
