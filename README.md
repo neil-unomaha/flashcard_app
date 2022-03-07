@@ -63,7 +63,7 @@ Lets also examine the default Active Storage location for the app. Look at the d
 What this means:
 - Your Active Storage directory (location where all your associated attachments live) will be located outside of your app in the **imported_dbs/flashcard_cissp_storage** directory (but again, you can easily change the location if you want to).
 
-Personally, I decided to nest my flashcard app into a directory called **meta_apps**. Inside my meta_apps directory you can see the **flashcard_app**, as well as the **imported_dbs** directoy where all the flashcard app data lives:
+Personally, I decided to nest my flashcard app into a directory called **meta_apps**. Inside my meta_apps directory you can see the **flashcard_app**, as well as the **imported_dbs** directory where all the flashcard app data lives:
 
 ![general_tree_structure](https://user-images.githubusercontent.com/38234505/156951845-fd0581f6-045d-49f7-8051-15ff906a6494.png)
 
