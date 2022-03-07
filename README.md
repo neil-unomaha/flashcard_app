@@ -46,7 +46,7 @@ This flashcard app includes a number of awesome features, including:
 From the root of your app, run `bundle` to install the required gems and their dependencies.
 
 ### Important
-The database where all your cards live, as well the active storage location where all your uploads live, exist OUTSIDE of the application. This is a hackish way to easily seperate the data from the app. (For example: like me you might have multiple card decks and want to seperately version your card decks). 
+The database where all your cards live, as well as the active storage location where all your uploads live, exist OUTSIDE of the application. This is a hackish way to easily seperate the data from the app. (For example: like me you might have multiple card decks and want to seperately version your card decks). 
 
 Lets examine the default database location. Look at the default configuration of your database at **config/database.yml**.  You will notice that the database name/location is: `../imported_dbs/flashcard_cissp_database.sqlite3`. What this means:
 - Your database will be located outside of your app in a directory named **imported_dbs**
