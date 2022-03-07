@@ -10,9 +10,7 @@ Rails.application.routes.draw do
       post 'combine_create'
     end
   end
-  resources :cards_tags
   resources :cards
-  resources :tags
   resources :categories
   resources :domains
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

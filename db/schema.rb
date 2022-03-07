@@ -62,15 +62,6 @@ ActiveRecord::Schema.define(version: 2021_02_26_032118) do
     t.index ["domain_id"], name: "index_cards_on_domain_id"
   end
 
-  create_table "cards_tags", force: :cascade do |t|
-    t.integer "card_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["card_id"], name: "index_cards_tags_on_card_id"
-    t.index ["tag_id"], name: "index_cards_tags_on_tag_id"
-  end
-
   create_table "cards_tests", force: :cascade do |t|
     t.integer "card_id", null: false
     t.integer "test_id", null: false
@@ -90,12 +81,6 @@ ActiveRecord::Schema.define(version: 2021_02_26_032118) do
   end
 
   create_table "domains", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
