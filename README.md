@@ -69,7 +69,7 @@ Personally, I decided to nest my flashcard app into a directory called **meta_ap
 
 Finally, run `rails db:migrate` to create your database file.
 
-Startup your rails server with `rails s` and visit `localhost:3000` in your favorite web browser
+Startup your rails server with `rails s` and visit `localhost:3000` in your favorite web browser. Happy Studying!
 
 
 
