@@ -74,7 +74,7 @@ Startup your rails server with `rails s` and visit `localhost:3000` in your favo
 ## Last But Certainly Not Least
 **STUDY EFFICIENTLY, FRIENDS**! 
 
-Strive to review your flashcards only as much as you need to in order to recall the content, but no more! ![Read this awesome article about spaced repetition](https://collegeinfogeek.com/spaced-repetition-memory-technique/) to do just that. Happy studying!
+Strive to review your flashcards only as much as you need to in order to recall the content, but no more! [Read this awesome article about spaced repetition](https://collegeinfogeek.com/spaced-repetition-memory-technique/) to do just that. Happy studying!
 
 
 
