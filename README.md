@@ -48,11 +48,19 @@ From the root of your app, run `bundle` to install the required gems and their d
 ### Important
 The database where all your cards live, as well as the active storage location where all your uploads live, exist OUTSIDE of the application. This is a hackish way to easily seperate the data from the app. (For example: like me you might have multiple card decks and want to seperately version your card decks). 
 
-Lets examine the default database location. Look at the default configuration of your database at **config/database.yml**.  You will notice that the database name/location is: `../imported_dbs/flashcard_cissp_database.sqlite3`. What this means:
+Lets examine the default database location. Look at the default configuration of your database at **config/database.yml**.  You will notice that the database name/location is: 
+
+`../imported_dbs/flashcard_cissp_database.sqlite3`
+
+What this means:
 - Your database will be located outside of your app in a directory named **imported_dbs**
 - The default database name is **flashcard_cissp_database.sqlite3** (but this can easily be changed).
 
-Lets also example the default Active Storage location for the app. Look at the default configuration at **config/storage.yml**. You will notice that the Active Storage name/location is `../imported_dbs/flashcard_cissp_storage`. What this means:
+Lets also example the default Active Storage location for the app. Look at the default configuration at **config/storage.yml**. You will notice that the Active Storage name/location is: 
+
+`../imported_dbs/flashcard_cissp_storage`. 
+
+What this means:
 - Your Active Storage directory (location where all your associated attachments live) will be located outside of your app in the **imported_dbs/flashcard_cissp_storage** directory (but again, you can easily change the location if you want to).
 
 
