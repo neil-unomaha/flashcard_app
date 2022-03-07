@@ -69,7 +69,12 @@ Personally, I decided to nest my flashcard app into a directory called **meta_ap
 
 Finally, run `rails db:migrate` to create your database file.
 
-Startup your rails server with `rails s` and visit `localhost:3000` in your favorite web browser. Happy Studying!
+Startup your rails server with `rails s` and visit `localhost:3000` in your favorite web browser.
+
+## Last But Certainly Not Least
+**STUDY EFFICIENTLY, FRIENDS**! 
+
+Strive to review your flashcards only as much as you need to in order to recall the content, but no more! ![Read this awesome article about spaced repetition](https://collegeinfogeek.com/spaced-repetition-memory-technique/) to do just that. Happy studying!
 
 
 
