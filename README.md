@@ -56,7 +56,7 @@ What this means:
 - Your database will be located outside of your app in a directory named **imported_dbs**
 - The default database name is **flashcard_cissp_database.sqlite3** (but this can easily be changed).
 
-Lets also example the default Active Storage location for the app. Look at the default configuration at **config/storage.yml**. You will notice that the Active Storage name/location is: 
+Lets also examine the default Active Storage location for the app. Look at the default configuration at **config/storage.yml**. You will notice that the Active Storage name/location is: 
 
 `../imported_dbs/flashcard_cissp_storage`. 
 
