@@ -37,7 +37,7 @@ This flashcard app includes a number of awesome features, including:
 
 **Rails**: You will need rails version `6.1.x`
 
-**imagemagick**: This app depends on the `image_processing` gem so that you can drag-and-drop images onto your cards. 
+**imagemagick**: This app depends on the `image_processing` gem so that thumbnails of your attached images properly show up. 
   - To install on a Mac via homebrew: `brew install imagemagick`
   - To install via a debian/ubuntu terminal: `sudo apt install imagemagick`
 
