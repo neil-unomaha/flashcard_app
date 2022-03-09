@@ -26,6 +26,7 @@ class FillinCardsController < ApplicationController
 
     respond_to do |format|
       if @fillin_card.save
+        @fillin_card.callback_after_create_and_update
         format.html { redirect_to fillin_card_url(@fillin_card), notice: "Fillin card was successfully created." }
         format.json { render :show, status: :created, location: @fillin_card }
       else
@@ -39,6 +40,7 @@ class FillinCardsController < ApplicationController
   def update
     respond_to do |format|
       if @fillin_card.update(fillin_card_params)
+        @fillin_card.callback_after_create_and_update
         format.html { redirect_to fillin_card_url(@fillin_card), notice: "Fillin card was successfully updated." }
         format.json { render :show, status: :ok, location: @fillin_card }
       else
