@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Domain:</strong>
+  <%= @fillin_card.fillin_domain.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @fillin_card.fillin_category.name %>
+</p>
+
+<%= @fillin_card.question %>
+
+
+
+<%= link_to 'Edit', edit_fillin_card_path(@fillin_card) %> |
+<%= link_to 'Back', fillin_cards_path %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fillin Tests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fillin_tests.each do |fillin_test| %>
+      <tr>
+        <td><%= fillin_test.name %></td>
+        <td><%= link_to 'Show', fillin_test %></td>
+        <td><%= link_to 'Edit', edit_fillin_test_path(fillin_test) %></td>
+        <td><%= link_to 'Destroy', fillin_test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fillin Test', new_fillin_test_path %>

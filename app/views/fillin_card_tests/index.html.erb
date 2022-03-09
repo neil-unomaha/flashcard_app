@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fillin Card Tests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fillin card</th>
+      <th>Position hide</th>
+      <th>Correct</th>
+      <th>Test</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fillin_card_tests.each do |fillin_card_test| %>
+      <tr>
+        <td><%= fillin_card_test.fillin_card_id %></td>
+        <td><%= fillin_card_test.position_hide %></td>
+        <td><%= fillin_card_test.correct %></td>
+        <td><%= fillin_card_test.test_id %></td>
+        <td><%= link_to 'Show', fillin_card_test %></td>
+        <td><%= link_to 'Edit', edit_fillin_card_test_path(fillin_card_test) %></td>
+        <td><%= link_to 'Destroy', fillin_card_test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fillin Card Test', new_fillin_card_test_path %>

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :fillin_card_tests
+  resources :fillin_tests
+  resources :fillin_categories
+  resources :fillin_domains
+  resources :fillin_cards
   root to: 'main#index'
   resources :cards_tests
   resources :tests do

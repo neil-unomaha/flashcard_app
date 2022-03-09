@@ -1,0 +1,22 @@
+<%= form_with(model: fillin_domain) do |form| %>
+  <% if fillin_domain.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fillin_domain.errors.count, "error") %> prohibited this fillin_domain from being saved:</h2>
+
+      <ul>
+        <% fillin_domain.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fillin Domains</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fillin_domains.each do |fillin_domain| %>
+      <tr>
+        <td><%= fillin_domain.name %></td>
+        <td><%= link_to 'Show', fillin_domain %></td>
+        <td><%= link_to 'Edit', edit_fillin_domain_path(fillin_domain) %></td>
+        <td><%= link_to 'Destroy', fillin_domain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fillin Domain', new_fillin_domain_path %>

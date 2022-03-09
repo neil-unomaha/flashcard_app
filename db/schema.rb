@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_032118) do
+ActiveRecord::Schema.define(version: 2022_03_09_062402) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -81,6 +81,55 @@ ActiveRecord::Schema.define(version: 2021_02_26_032118) do
   end
 
   create_table "domains", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fillin_card_answers", force: :cascade do |t|
+    t.integer "fillin_card_id", null: false
+    t.integer "position"
+    t.text "answer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fillin_card_id"], name: "index_fillin_card_answers_on_fillin_card_id"
+  end
+
+  create_table "fillin_card_tests", force: :cascade do |t|
+    t.integer "fillin_card_id", null: false
+    t.boolean "position_hide"
+    t.boolean "correct"
+    t.integer "test_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fillin_card_id"], name: "index_fillin_card_tests_on_fillin_card_id"
+    t.index ["test_id"], name: "index_fillin_card_tests_on_test_id"
+  end
+
+  create_table "fillin_cards", force: :cascade do |t|
+    t.integer "fillin_domain_id", null: false
+    t.integer "fillin_category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fillin_category_id"], name: "index_fillin_cards_on_fillin_category_id"
+    t.index ["fillin_domain_id"], name: "index_fillin_cards_on_fillin_domain_id"
+  end
+
+  create_table "fillin_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "fillin_domain_id"
+    t.index ["fillin_domain_id"], name: "index_fillin_categories_on_fillin_domain_id"
+  end
+
+  create_table "fillin_domains", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fillin_tests", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

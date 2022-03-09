@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fillin_card: one
+  position_hide: false
+  correct: false
+  test: one
+
+two:
+  fillin_card: two
+  position_hide: false
+  correct: false
+  test: two

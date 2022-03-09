@@ -1,0 +1,25 @@
+<%= form_with(model: fillin_card) do |form| %>
+  <% if fillin_card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fillin_card.errors.count, "error") %> prohibited this fillin_card from being saved:</h2>
+
+      <ul>
+        <% fillin_card.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :fillin_domain_id %>
+  <%= form.hidden_field :fillin_category_id %>
+
+  <div class="field">
+    <%= form.label :question, "Question" %>
+    <%= form.rich_text_area :question %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
