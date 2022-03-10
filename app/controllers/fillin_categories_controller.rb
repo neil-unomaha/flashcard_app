@@ -12,7 +12,7 @@ class FillinCategoriesController < ApplicationController
 
   # GET /fillin_categories/new
   def new
-    @fillin_category = FillinCategory.new
+    @fillin_category = FillinCategory.new(fillin_domain_id: params[:fillin_domain_id])
   end
 
   # GET /fillin_categories/1/edit
@@ -65,6 +65,6 @@ class FillinCategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fillin_category_params
-      params.require(:fillin_category).permit(:name)
+      params.require(:fillin_category).permit(:name, :fillin_domain_id)
     end
 end

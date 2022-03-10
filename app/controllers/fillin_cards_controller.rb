@@ -12,7 +12,7 @@ class FillinCardsController < ApplicationController
 
   # GET /fillin_cards/new
   def new
-    @fillin_card = FillinCard.new(fillin_domain: FillinDomain.first, fillin_category: FillinCategory.first)
+    @fillin_card = FillinCard.new(fillin_domain_id: params[:fillin_domain_id], fillin_category_id: params[:fillin_category_id])
   end
 
   # GET /fillin_cards/1/edit

@@ -26,13 +26,13 @@ class FillinCard < ApplicationRecord
 
   def proper_special_char_answers
     if question.to_s.scan(/\[\=/).size != question.to_s.scan(/\=\]/).size
-      errors.add(:question, 'Your "[=" does not equal your "=]"')
+      errors.add(:_, 'Your "[=" does not equal your "=]"')
     end
   end
 
   def at_least_one_answer
     if question.to_s.scan(/\[\=\K[^\=\]]+/).size == 0
-      errors.add(:question, 'You need at least one answer (a.k.a, one "[==]" )')
+      errors.add(:_, 'You need at least one fillable answer (a.k.a, one "[==]" )')
     end
   end
 
