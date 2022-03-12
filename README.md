@@ -53,7 +53,7 @@ Lets examine the default database location. Look at the default configuration of
 `../imported_dbs/flashcard_cissp_database.sqlite3`
 
 What this means:
-- Your database will be located outside of your app in a directory named **imported_dbs**
+- Your database will be located *up one directory* from this app's location on your computer, and within the directory named **imported_dbs**
 - The default database name is **flashcard_cissp_database.sqlite3** (but this can easily be changed).
 
 Lets also examine the default Active Storage location for the app. Look at the default configuration at **config/storage.yml**. You will notice that the Active Storage name/location is: 
@@ -61,7 +61,7 @@ Lets also examine the default Active Storage location for the app. Look at the d
 `../imported_dbs/flashcard_cissp_storage`. 
 
 What this means:
-- Your Active Storage directory (location where all your associated attachments live) will be located outside of your app in the **imported_dbs/flashcard_cissp_storage** directory (but again, you can easily change the location if you want to).
+- Your Active Storage directory (location where all your associated attachments live) will be located *up one directory* from this app's location on your computer, and within the **imported_dbs/flashcard_cissp_storage** directory (but again, you can easily change the location if you want to).
 
 Personally, I decided to nest my flashcard app into a directory called **meta_apps**. Inside my meta_apps directory you can see the **flashcard_app**, as well as the **imported_dbs** directory where all the flashcard app data lives:
 
