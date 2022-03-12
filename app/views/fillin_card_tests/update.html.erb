@@ -1,0 +1,48 @@
+<h1 class="text-info text-center">Test: <%= @fillin_card_test.fillin_test.name%> - <%= fillin_test_card_feedback(@fillin_card_test) %></h1>
+
+<div class="text-center">
+  Progress: <strong><%= @fillin_card_test.fillin_test.fillin_card_tests.unanswered.size %></strong> question(s) left in test
+</div>
+<div class="progress">
+ <div class="progress-bar bg-success" style="width:<%= fillin_test_progress_percentage(@fillin_card_test.fillin_test)%>"><%= fillin_test_progress_percentage(@fillin_card_test.fillin_test)%></div>
+</div>
+
+
+<h2 class="text-primary">Question</h2>
+<div class="card">
+  <div class="card-body">
+      <%= custom_trix_safe(@question_txt) %>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3 class="text-primary">Your Fill-in Answer(s)</h3>
+    <% @fillin_card_test.fillin_card_test_user_answers.each do |user_answer| %>
+      <% if !user_answer.hidden? %>
+          <%= label_tag :displayed_answer, "Q#{user_answer.fillin_card_answer.position}: " %>
+          <p readonly class="form-control"><%=user_answer.fillin_card_answer.answer%></p>
+      <% else %>
+        <div class="field">
+          <%= label_tag "Q#{user_answer.fillin_card_answer.position}: " %>
+          <p readonly class="form-control"><%=user_answer.user_answer%></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-6">
+    <h3 class="text-primary">Correct Fill-in Answer(s)</h3>
+    <% @fillin_card_test.fillin_card_test_user_answers.each do |user_answer| %>
+      <%= label_tag :displayed_answer, "Q#{user_answer.fillin_card_answer.position}: " %>
+      <p readonly class="form-control"><%=user_answer.fillin_card_answer.answer%></p>
+    <% end %>
+  </div>
+</div>
+
+<% if @are_all_answered %>
+  <%= link_to "See Results", fillin_card_test_path(@fillin_card_test), class: "btn btn-info", autofocus: true %>
+<% else %>
+  <%= link_to "Next Question", edit_fillin_card_test_path(@next_question), class: "btn btn-primary", autofocus: true %>
+<% end %>

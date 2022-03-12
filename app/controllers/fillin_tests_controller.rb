@@ -3,7 +3,7 @@ class FillinTestsController < ApplicationController
 
   # GET /fillin_tests or /fillin_tests.json
   def index
-    @fillin_tests = FillinTest.all
+    @fillin_tests = FillinTest.all.includes(fillin_card_tests: [:fillin_card_answers, fillin_card: [:fillin_domain, :fillin_category]])
   end
 
   # GET /fillin_tests/1 or /fillin_tests/1.json
@@ -25,7 +25,24 @@ class FillinTestsController < ApplicationController
 
     respond_to do |format|
       if @fillin_test.save
-        format.html { redirect_to fillin_test_url(@fillin_test), notice: "Fillin test was successfully created." }
+
+        # pull in all the cards for that category in order to make a test
+        if params[:fillin_test][:fillin_category_ids].reject(&:empty?).any?
+          params[:fillin_test][:fillin_category_ids].reject(&:empty?).each do |cat_id|
+            FillinCategory.find(cat_id).fillin_cards.each do |fillin_card|
+              @fillin_test.fillin_card_tests.build(fillin_card: fillin_card).save
+            end
+          end
+        end
+
+        # The fillin cards exist. Now create all the answers and by default "Hide" teh answer so it has to be filled in
+        @fillin_test.fillin_card_tests.each do |fillin_card_test|
+          fillin_card_test.fillin_card_answers.each do |fillin_answer|
+            fillin_card_test.fillin_card_test_user_answers.build(fillin_card_answer: fillin_answer, hidden: true).save
+          end
+        end
+
+        format.html { redirect_to @fillin_test, notice: "Fillin test was successfully created." }
         format.json { render :show, status: :created, location: @fillin_test }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +55,7 @@ class FillinTestsController < ApplicationController
   def update
     respond_to do |format|
       if @fillin_test.update(fillin_test_params)
-        format.html { redirect_to fillin_test_url(@fillin_test), notice: "Fillin test was successfully updated." }
+        format.html { redirect_to @fillin_test, notice: "Fillin test was successfully updated." }
         format.json { render :show, status: :ok, location: @fillin_test }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,11 +77,12 @@ class FillinTestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fillin_test
-      @fillin_test = FillinTest.find(params[:id])
+      @fillin_test = FillinTest.includes(fillin_card_tests: [:fillin_card_answers, fillin_card: [:fillin_domain, :fillin_category]]).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def fillin_test_params
       params.require(:fillin_test).permit(:name)
+      params.require(:fillin_test).permit(:name, :fillin_category_ids)
     end
 end

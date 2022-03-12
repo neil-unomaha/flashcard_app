@@ -1,27 +1,65 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Fillin Tests</h1>
+<h1>Tests <%= link_to '+ New Test', new_fillin_test_path, class: "btn btn-sm btn-success" %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div id="accordion">
 
-  <tbody>
-    <% @fillin_tests.each do |fillin_test| %>
-      <tr>
-        <td><%= fillin_test.name %></td>
-        <td><%= link_to 'Show', fillin_test %></td>
-        <td><%= link_to 'Edit', edit_fillin_test_path(fillin_test) %></td>
-        <td><%= link_to 'Destroy', fillin_test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @fillin_tests.each do |fillin_test| %>
 
-<br>
+  <div class="card">
+    <div class="card-header">
+      <h3>
+        Test: <%= fillin_test.name%>
 
-<%= link_to 'New Fillin Test', new_fillin_test_path %>
+        <small>
+        <a class="card-link" data-toggle="collapse" class="align-right" href="#collapse<%=fillin_test.id%>">
+          (see results)
+        </a>
+        </small>
+
+        <% unless fillin_test.test_not_started?%>
+          <small><%= fillin_test.fillin_cards_correct %> out of <%= fillin_test.fillin_total_cards%> correct</small>
+        <% end %>
+
+      </h3>
+      <% if fillin_test.fillin_cards.any? %>
+        <%= link_to "Start/Restart Test", edit_fillin_card_test_path(fillin_test.fillin_card_tests.first, start_test: true), class: "btn btn-sm btn-info"%>
+      <% end %>
+      <%= link_to 'Destroy Test', fillin_test, class: "btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      <% if fillin_test.completed? && fillin_test.at_least_one_card_incorrect?%>
+        <% #link_to 'Create Test with Incorrect Cards', create_on_incorrect_test_path(test), class: "btn btn-sm btn-success" %>
+      <% end %>
+    </div>
+    <div id="collapse<%=fillin_test.id%>" class="collapse" data-parent="#accordion">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Category</th>
+              <th>Question</th>
+              <th>User Answer</th>
+              <th>Correct?</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% fillin_test.fillin_card_tests.each do |fillin_card_test| %>
+              <tr class="<%=fillin_card_answer_styling(fillin_card_test)%>">
+                <td><%= fillin_card_test.fillin_card.fillin_domain.name %></td>
+                <td><%= fillin_card_test.fillin_card.fillin_category.name %></td>
+                <td><%= fillin_card_test.fillin_card.question %></td>
+                <td>"Display the User answers"</td>
+                <td><%= fillin_card_test.correct_to_s %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+</div>

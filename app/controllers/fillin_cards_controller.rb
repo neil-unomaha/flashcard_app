@@ -23,11 +23,10 @@ class FillinCardsController < ApplicationController
   def create
     @fillin_card = FillinCard.new(fillin_card_params)
 
-
     respond_to do |format|
       if @fillin_card.save
         @fillin_card.callback_after_create_and_update
-        format.html { redirect_to fillin_card_url(@fillin_card), notice: "Fillin card was successfully created." }
+        format.html { redirect_to @fillin_card.fillin_category, notice: "Fill-in Card was successfully created." }
         format.json { render :show, status: :created, location: @fillin_card }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -55,7 +54,7 @@ class FillinCardsController < ApplicationController
     @fillin_card.destroy
 
     respond_to do |format|
-      format.html { redirect_to fillin_cards_url, notice: "Fillin card was successfully destroyed." }
+      format.html { redirect_to @fillin_card.fillin_category, notice: "Fill-in Card was successfully destroyed." }
       format.json { head :no_content }
     end
   end

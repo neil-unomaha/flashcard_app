@@ -1,9 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @fillin_test.name %>
-</p>
+<div class="text-center">
+  <% #link_to "Start/Restart Test", edit_cards_test_path(@test.cards_tests.first, start_test: true), class: "btn btn-info"%>
+</div>
 
-<%= link_to 'Edit', edit_fillin_test_path(@fillin_test) %> |
-<%= link_to 'Back', fillin_tests_path %>
+<h1>Test Name: <%= @fillin_test.name%></h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Domain</th>
+      <th>Category</th>
+      <th>Raw Question Text</th>
+      <th>Fillin Prompt(s)</th>
+      <th>User Answer(s)</th>
+      <th>Correct?</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fillin_test.fillin_card_tests.each do |fillin_card_test| %>
+      <tr>
+        <td><%= fillin_card_test.fillin_card.fillin_domain.name %></td>
+        <td><%= fillin_card_test.fillin_card.fillin_category.name %></td>
+        <td><%= fillin_card_test.fillin_card.question %></td>
+        <td>
+          <% fillin_card_test.fillin_card_test_user_answers.each_with_index do |user_answer, i| %>
+            <strong>Q<%=i + 1%></strong> <i><%="(hidden)" if user_answer.hidden?%></i>: <%= user_answer.fillin_card_answer.answer %><br>
+          <% end %>
+        </td>
+        <td>
+          <% if fillin_card_test.fillin_card_test_user_answers.any?(&:unanswered?) %>
+            1+ Fillable prompts are unanswered
+          <% else %>
+            <% fillin_card_test.fillin_card_test_user_answers.each_with_index do |user_answer, i| %>
+              <strong>Q<%=i + 1%></strong> <i><%="(pre-filled)" if !user_answer.hidden?%></i>: <%= user_answer.user_answer %><br>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= fillin_card_test.correct_to_s %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Back to all Fill-in Tests', fillin_tests_path, class: "btn btn-info" %>

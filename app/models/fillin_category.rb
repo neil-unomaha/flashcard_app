@@ -1,4 +1,4 @@
 class FillinCategory < ApplicationRecord
   belongs_to :fillin_domain
-  has_many :fillin_cards
+  has_many :fillin_cards, dependent: :destroy
 end

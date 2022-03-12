@@ -11,27 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :fillin_card_id %>
-    <%= form.text_field :fillin_card_id %>
+
+  <h2 class="text-primary">Question</h2>
+  <div class="card">
+    <div class="card-body">
+        <%= custom_trix_safe(@question_txt) %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :position_hide %>
-    <%= form.check_box :position_hide %>
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h3 class="text-primary">Your Fill-in Answer(s)</h3>
+      <%= form.fields_for :fillin_card_test_user_answers do |user_answer_form| %>
+        <%= user_answer_form.hidden_field :id%>
+        <% if !user_answer_form.object.hidden? %>
+            <%= label_tag :displayed_answer, "Q#{user_answer_form.object.fillin_card_answer.position}: " %>
+            <p readonly class="form-control"><%=user_answer_form.object.fillin_card_answer.answer%></p>
+        <% else %>
+          <div class="field">
+            <%= user_answer_form.label :user_answer, "Q#{user_answer_form.object.fillin_card_answer.position}: " %>
+            <%= user_answer_form.text_field :user_answer, class: 'form-control' %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-sm-6">
+      &nbsp;
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :correct %>
-    <%= form.check_box :correct %>
-  </div>
 
-  <div class="field">
-    <%= form.label :test_id %>
-    <%= form.text_field :test_id %>
-  </div>
 
+
+  <br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Check Answer(s)" %>
   </div>
 <% end %>
