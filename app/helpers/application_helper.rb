@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def custom_trix_safe(text)
-    sanitize(text, tags: ['div', 'b', 'br', 'strong', 'em', 'del', 'a', 'h1', 'h2', 'h3', 'p', 'blockquote', 'pre', 'ul', 'li', 'ol'], attributes: ['href'])
+    sanitize(text, tags: ['div', 'b', 'br', 'strong', 'i', 'em', 'del', 'a', 'h1', 'h2', 'h3', 'p', 'blockquote', 'pre', 'ul', 'li', 'ol'], attributes: ['href', 'class'])
   end
 
   def test_progress_percentage(test)

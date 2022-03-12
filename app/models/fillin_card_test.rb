@@ -24,9 +24,9 @@ class FillinCardTest < ApplicationRecord
     question_txt = fillin_card.question.to_s
     fillin_card_test_user_answers.each do |user_answer_card|
       if user_answer_card.hidden?
-        question_txt = question_txt.gsub("[=#{user_answer_card.fillin_card_answer.answer}=]", "<strong>Q#{user_answer_card.fillin_card_answer.position}?</strong>")
+        question_txt = question_txt.gsub("[=#{user_answer_card.fillin_card_answer.answer}=]", "<i class='text-info'>Q#{user_answer_card.fillin_card_answer.position}?</i>")
       else
-        question_txt = question_txt.gsub("[=#{user_answer_card.fillin_card_answer.answer}=]", "<strong>#{user_answer_card.fillin_card_answer.answer}</strong>")
+        question_txt = question_txt.gsub("[=#{user_answer_card.fillin_card_answer.answer}=]", "<strong class='text-success'>#{user_answer_card.fillin_card_answer.answer}</strong>")
       end
     end
     question_txt

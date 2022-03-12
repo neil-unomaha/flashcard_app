@@ -50,7 +50,23 @@
                 <td><%= fillin_card_test.fillin_card.fillin_domain.name %></td>
                 <td><%= fillin_card_test.fillin_card.fillin_category.name %></td>
                 <td><%= fillin_card_test.fillin_card.question %></td>
-                <td>"Display the User answers"</td>
+                <td>
+                  <% fillin_card_test.fillin_card_test_user_answers.each_with_index do |user_answer, index|%>
+                    <strong>Q<%=index + 1%></strong>
+                    <% if user_answer.hidden? %>
+                      <i>(hidden)</i>
+                    <% end %>
+                    :&nbsp;
+                    <% if !user_answer.hidden?%>
+                      <span><%=user_answer.user_answer%></span>
+                    <% elsif user_answer.correct? %>
+                      <span class='text-success'><%=user_answer.user_answer%></span>
+                    <% else %>
+                      <span class='text-danger'><%=user_answer.user_answer%></span>
+                    <% end %>
+                    <br>
+                  <% end %>
+                </td>
                 <td><%= fillin_card_test.correct_to_s %></td>
               </tr>
             <% end %>
