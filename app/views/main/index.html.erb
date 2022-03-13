@@ -31,7 +31,18 @@
           <% domain.categories.each do |cat|%>
             <div class="row">
               <div class="col-sm-12">
-                <span class="badge badge-pill badge-info"><%= cat.cards.size%> </span> <%= link_to cat.name, category_path(cat) %>
+                <table class="table table-sm table-borderless table-hover">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <span class="badge badge-pill badge-info"><%= cat.cards.size%> </span> <%= link_to cat.name, category_path(cat) %>
+                        </td>
+                        <td>
+                          <%= link_to "+ Add Card", new_card_path(domain_id: domain, category_id: cat), class: "btn btn-sm btn-success float-right" %>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
               </div>
             </div>
           <% end %>

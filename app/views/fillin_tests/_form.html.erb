@@ -19,7 +19,7 @@
 
   <h3 class='text-muted'>Select Categories. All cards within that category will be added</h3>
   <div class="field">
-    <%= form.collection_check_boxes(:fillin_category_ids, FillinCategory.all, :id, :name) do |b| %>
+    <%= form.collection_check_boxes(:fillin_category_ids, FillinCategory.all, :id, :test_creation_selectbox_to_s) do |b| %>
       <span class="badge badge-pill badge-info"><%= b.object.fillin_cards.size%> </span>
       <%= b.check_box %>
       <%= b.label %>
