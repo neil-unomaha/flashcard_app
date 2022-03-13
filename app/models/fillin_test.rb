@@ -3,6 +3,9 @@ class FillinTest < ApplicationRecord
   has_many :fillin_card_tests, dependent: :destroy
   has_many :fillin_cards, through: :fillin_card_tests
 
+  accepts_nested_attributes_for :fillin_card_tests
+
+
   def fillin_cards_correct
     count = 0
     fillin_card_tests.each {|fct| count += 1 if fct.correct? }

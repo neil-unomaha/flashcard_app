@@ -1,0 +1,48 @@
+<%= form_with(model: fillin_test) do |form| %>
+  <% if fillin_test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fillin_test.errors.count, "error") %> prohibited this Fill-in test from being saved:</h2>
+
+      <ul>
+        <% fillin_test.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.fields_for :fillin_card_tests do |fillin_card_test_form| %>
+
+    <div class="card">
+      <div class="card-header"><strong>Card</strong></div>
+      <div class="card-body">
+        <%= custom_trix_safe(fillin_card_test_form.object.convert_to_question_display_completely_hidden)%>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <%= fillin_card_test_form.fields_for :fillin_card_test_user_answers do |user_answer_form| %>
+            <div class="col-5">
+              <%= label_tag :hidden, "Hide Answer?" %><br>
+                <%= user_answer_form.radio_button :hidden, '1', checked: user_answer_form.object.hidden? %>
+                <%= user_answer_form.label :hidden, 'Yes', value: "1" %>
+                <%= user_answer_form.radio_button :hidden, '0', checked: !user_answer_form.object.hidden? %>
+                <%= user_answer_form.label :hidden, 'No', value: "0" %>
+            </div>
+            <div class="col-7">
+              <%= label_tag :displayed_answer, "Q#{user_answer_form.object.fillin_card_answer.position}: " %>
+              <p readonly class="form-control"><%=user_answer_form.object.fillin_card_answer.answer%></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+  <% end %>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -21,7 +21,7 @@ class FillinTestsController < ApplicationController
 
   # POST /fillin_tests or /fillin_tests.json
   def create
-    @fillin_test = FillinTest.new(fillin_test_params)
+    @fillin_test = FillinTest.new(fillin_test_new_params)
 
     respond_to do |format|
       if @fillin_test.save
@@ -42,7 +42,7 @@ class FillinTestsController < ApplicationController
           end
         end
 
-        format.html { redirect_to @fillin_test, notice: "Fillin test was successfully created." }
+        format.html { redirect_to edit_fillin_test_path(@fillin_test), notice: "Specify which portions of each card to show/hide." }
         format.json { render :show, status: :created, location: @fillin_test }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -54,8 +54,8 @@ class FillinTestsController < ApplicationController
   # PATCH/PUT /fillin_tests/1 or /fillin_tests/1.json
   def update
     respond_to do |format|
-      if @fillin_test.update(fillin_test_params)
-        format.html { redirect_to @fillin_test, notice: "Fillin test was successfully updated." }
+      if @fillin_test.update(fillin_test_edit_params)
+        format.html { redirect_to @fillin_test, notice: "Fillin test was successfully created." }
         format.json { render :show, status: :ok, location: @fillin_test }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -81,8 +81,12 @@ class FillinTestsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def fillin_test_params
-      params.require(:fillin_test).permit(:name)
+    def fillin_test_new_params
       params.require(:fillin_test).permit(:name, :fillin_category_ids)
+    end
+
+    def fillin_test_edit_params
+      params.require(:fillin_test).permit(:name, :fillin_category_ids)
+      params.require(:fillin_test).permit(fillin_card_tests_attributes: [:id, fillin_card_test_user_answers_attributes: [:id, :hidden]])
     end
 end

@@ -31,7 +31,18 @@
           <% domain.fillin_categories.each do |cat|%>
             <div class="row">
               <div class="col-sm-12">
-                <span class="badge badge-pill badge-info"><%= cat.fillin_cards.size%> </span> <%= link_to cat.name, fillin_category_path(cat) %>
+                <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <span class="badge badge-pill badge-info"><%= cat.fillin_cards.size%> </span> <%= link_to cat.name, fillin_category_path(cat) %>
+                        </td>
+                        <td>
+                          <%= link_to "+ Add Card", new_fillin_card_path(fillin_domain_id: domain, fillin_category_id: cat), class: "btn btn-sm btn-success float-right" %>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
               </div>
             </div>
           <% end %>
