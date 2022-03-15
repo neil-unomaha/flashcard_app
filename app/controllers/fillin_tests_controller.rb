@@ -37,8 +37,8 @@ class FillinTestsController < ApplicationController
 
         # The fillin cards exist. Now create all the answers and by default "Hide" teh answer so it has to be filled in
         @fillin_test.fillin_card_tests.each do |fillin_card_test|
-          fillin_card_test.fillin_card_answers.each do |fillin_answer|
-            fillin_card_test.fillin_card_test_user_answers.build(fillin_card_answer: fillin_answer, hidden: true).save
+          fillin_card_test.fillin_card.fillin_card_answers.each do |fillin_answer|
+            FillinCardTestUserAnswer.new(fillin_card_test_id: fillin_card_test.id, fillin_card_answer_id: fillin_answer.id, hidden: true).save
           end
         end
 

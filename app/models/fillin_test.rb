@@ -30,7 +30,7 @@ class FillinTest < ApplicationRecord
   end
 
   def generate_next_question
-    fillin_cards_tests.unanswered.to_a.shuffle.first
+    fillin_card_tests.unanswered.to_a.shuffle.first
   end
 
   def all_answered?

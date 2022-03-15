@@ -54,7 +54,8 @@ class FillinCardTest < ApplicationRecord
   end
 
   def at_least_one_hidden_portion
-    return unless fillin_card_test_user_answers.none?{|a|a.hidden?}
+    return unless fillin_card_test_user_answers.any? &&
+                  fillin_card_test_user_answers.none?{|a|a.hidden?}
     errors.add(:_, 'You need at least one "Hidden Answer" for Each card.')
   end
 
