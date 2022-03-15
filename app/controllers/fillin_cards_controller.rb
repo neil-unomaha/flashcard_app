@@ -67,6 +67,6 @@ class FillinCardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fillin_card_params
-      params.require(:fillin_card).permit(:question, :fillin_domain_id, :fillin_category_id)
+      params.require(:fillin_card).permit(:additional_info, :question, :fillin_domain_id, :fillin_category_id)
     end
 end

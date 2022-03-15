@@ -5,6 +5,7 @@ class FillinCard < ApplicationRecord
   has_many :fillin_card_tests, dependent: :destroy
 
   has_rich_text :question
+  has_rich_text :additional_info
 
   validate :proper_special_char_answers
   validate :at_least_one_answer
