@@ -12,11 +12,10 @@
   <% end %>
 
   <div class="row">
-    <div class=col-sm-5>
-      <div class="card-front card-front-js <%= hide_front_card(@cards_test.test)%>">
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <%= @cards_test.card.front %>
+    <div class="col-sm-5">
+      <div class="h-100 card card-front card-front-js <%= hide_front_card(@cards_test.test)%>">
+        <div class="card-header">Flashcard - Front</div>
+        <div class="card-body"><%= @cards_test.card.front %></div>
       </div>
     </div>
     <div class="col-sm-2">
@@ -35,11 +34,10 @@
         </div>
       </div>
     </div>
-    <div class=col-sm-5>
-      <div class="card-back card-back-js <%= hide_back_card(@cards_test.test)%>">
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <%= @cards_test.card.back %>
+    <div class="col-sm-5">
+      <div class="h-100 card card-back card-back-js <%= hide_back_card(@cards_test.test)%>">
+        <div class="card-header">Flashcard - Back</div>
+        <div class="card-body"><%= @cards_test.card.back %></div>
       </div>
     </div>
   </div>
