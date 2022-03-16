@@ -11,7 +11,7 @@
 
 <table class="table table-striped">
   <thead>
-    <h2 class="text-info text-center">Cards <%= link_to "+ Add Card to Category", new_card_path(domain_id: @category.domain, category_id: @category), class: "btn btn-success" %></h2>
+    <h2 class="text-info text-center">Cards <%= link_to "+ Add Card to Category", new_card_path(domain_id: @category.domain, category_id: @category), class: "btn btn-success", autofocus: true %></h2>
     <tr>
       <th>Front</th>
       <th>Back</th>
