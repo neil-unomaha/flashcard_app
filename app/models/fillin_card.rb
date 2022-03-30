@@ -17,7 +17,7 @@ class FillinCard < ApplicationRecord
 
   def callback_after_create_and_update
     fillin_card_answers.destroy_all
-    fillin_card_answers.destroy_all
+    fillin_card_tests.destroy_all
     answers_ary.each_with_index do |answer, i|
       FillinCardAnswer.create(fillin_card: self, position: i + 1, answer: answer)
     end
