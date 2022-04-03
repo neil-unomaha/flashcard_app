@@ -3,6 +3,6 @@ class Category < ApplicationRecord
   belongs_to :domain
 
   def test_creation_selectbox_to_s
-    "#{domain.name} - name"
+    "#{domain.name} - #{name}"
   end
 end
