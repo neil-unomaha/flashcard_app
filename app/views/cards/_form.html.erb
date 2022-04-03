@@ -15,6 +15,13 @@
   <%= form.hidden_field :domain_id %>
   <%= form.hidden_field :category_id %>
 
+  <div class="row">
+    <div class="col-sm-6">
+      <%= form.label :category_id, "Fillin Category" %>
+      <%= form.collection_select :category_id, form.object.domain.categories.all.order(:name), :id, :name, {}, class: "form-control"%>
+    </div>
+  </div>
+
   <div class="field">
     <%= form.label :front, "Front of Card" %>
     <%= form.rich_text_area :front, autofocus: true %>

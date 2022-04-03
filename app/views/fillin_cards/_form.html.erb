@@ -14,7 +14,13 @@
   <%= render 'fillable_card_help'%>
 
   <%= form.hidden_field :fillin_domain_id %>
-  <%= form.hidden_field :fillin_category_id %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <%= form.label :fillin_category_id, "Fillin Category" %>
+      <%= form.collection_select :fillin_category_id, form.object.fillin_domain.fillin_categories.all.order(:name), :id, :name, {}, class: "form-control"%>
+    </div>
+  </div>
 
   <div class="field">
     <%= form.label :question, "Question" %>
