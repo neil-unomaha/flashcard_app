@@ -39,8 +39,12 @@
       <p readonly class="form-control"><%=user_answer.fillin_card_answer.answer%></p>
     <% end %>
     <% if @fillin_card_test.fillin_card.additional_info.present? %>
-      <h4 class="text-muted"Additional Info</h4>
-      <%= @fillin_card_test.fillin_card.additional_info %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="text-muted">Additional Info</h5>
+          <%= @fillin_card_test.fillin_card.additional_info %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

@@ -24,8 +24,10 @@ class FillinCardTestsController < ApplicationController
       @fillin_card_test.fillin_test.fillin_card_tests.each do |fct|
         fct.update_column(:correct, nil)
       end
-      @fillin_card_test.fillin_card_test_user_answers.each do |fctua|
-        fctua.update_column(:user_answer, nil)
+      @fillin_card_test.fillin_test.fillin_card_tests.each do |fct|
+        fct.fillin_card_test_user_answers.each do |fctua|
+          fctua.update_column(:user_answer, nil)
+        end
       end
     end
 
