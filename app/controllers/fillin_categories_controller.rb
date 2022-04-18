@@ -3,7 +3,7 @@ class FillinCategoriesController < ApplicationController
 
   # GET /fillin_categories or /fillin_categories.json
   def index
-    @fillin_categories = FillinCategory.all
+    @fillin_categories = FillinCategory.all.order(:name)
   end
 
   # GET /fillin_categories/1 or /fillin_categories/1.json

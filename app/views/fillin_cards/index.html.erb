@@ -28,7 +28,7 @@
           <%= link_to "+ Add Category within Domain", new_fillin_category_path(fillin_domain_id: domain), class: 'btn btn-sm btn-success' %>
         </td>
         <td>
-          <% domain.fillin_categories.each do |cat|%>
+          <% domain.fillin_categories.order(:name).each do |cat|%>
             <div class="row">
               <div class="col-sm-12">
                 <table class="table table-sm table-borderless table-hover">

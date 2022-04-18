@@ -3,7 +3,6 @@ class FillinCardsController < ApplicationController
 
   # GET /fillin_cards or /fillin_cards.json
   def index
-    @fillin_cards = FillinCard.all
   end
 
   # GET /fillin_cards/1 or /fillin_cards/1.json
