@@ -30,7 +30,7 @@
             </div>
             <div class="col-7">
               <%= label_tag :displayed_answer, "Q#{user_answer_form.object.fillin_card_answer.position}: " %>
-              <p readonly class="form-control"><%=user_answer_form.object.fillin_card_answer.answer%></p>
+              <p readonly class="form-control"><%=sanitize(user_answer_form.object.fillin_card_answer.answer)%></p>
             </div>
           <% end %>
         </div>

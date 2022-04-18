@@ -36,7 +36,7 @@
     <h3 class="text-primary">Correct Fill-in Answer(s)</h3>
     <% @fillin_card_test.fillin_card_test_user_answers.each do |user_answer| %>
       <%= label_tag :displayed_answer, "Q#{user_answer.fillin_card_answer.position}: " %>
-      <p readonly class="form-control"><%=user_answer.fillin_card_answer.answer%></p>
+      <p readonly class="form-control"><%=sanitize(user_answer.fillin_card_answer.answer)%></p>
     <% end %>
     <% if @fillin_card_test.fillin_card.additional_info.present? %>
       <div class="card">
