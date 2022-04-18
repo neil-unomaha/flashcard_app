@@ -26,7 +26,7 @@
         <td><%= fillin_card_test.fillin_card.question %></td>
         <td>
           <% fillin_card_test.fillin_card_test_user_answers.each_with_index do |user_answer, i| %>
-            <strong>Q<%=i + 1%></strong> <i><%="(hidden)" if user_answer.hidden?%></i>: <%= user_answer.fillin_card_answer.answer %><br>
+            <strong>Q<%=i + 1%></strong> <i><%="(hidden)" if user_answer.hidden?%></i>: <%= sanitize(user_answer.fillin_card_answer.answer) %><br>
           <% end %>
         </td>
         <td>
