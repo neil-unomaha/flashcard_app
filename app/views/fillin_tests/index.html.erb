@@ -9,8 +9,10 @@
   <div class="card">
     <div class="card-header">
       <h3>
-        Test: <%= fillin_test.name%>
-
+        <small class='badge badge-secondary'><%=fillin_test.fillin_total_cards%></small>
+        &nbsp;&nbsp;
+        <%= fillin_test.name%>
+        &nbsp;&nbsp;
         <small>
         <a class="card-link" data-toggle="collapse" class="align-right" href="#collapse<%=fillin_test.id%>">
           (see results)
