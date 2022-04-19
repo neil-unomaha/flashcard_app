@@ -19,7 +19,7 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <h3 class="text-primary">Your Fill-in Answer(s)</h3>
+    <h3 class="text-primary">Your Fill-in Answer(s) <%= fillin_test_card_feedback(@fillin_card_test)%></h3>
     <% @fillin_card_test.fillin_card_test_user_answers.each do |user_answer| %>
       <% if !user_answer.hidden? %>
           <%= label_tag :displayed_answer, "Q#{user_answer.fillin_card_answer.position}: " %>
